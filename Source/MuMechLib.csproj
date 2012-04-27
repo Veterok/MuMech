@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A66D9959-0340-4009-A128-2BD22220DD00}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MechJeb_RinComp</RootNamespace>
+    <RootNamespace>MuMech</RootNamespace>
     <AssemblyName>MuMechLib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
@@ -32,10 +32,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\Program Files %28x86%29\KSP\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files %28x86%29\KSP\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\Program Files %28x86%29\KSP\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files %28x86%29\KSP\KSP_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -75,7 +75,6 @@
     <Compile Include="VariableTank.cs" />
     <Compile Include="VesselState.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="RinComp.cs" />
     <Compile Include="VesselDistanceComparer.cs" />
     <Compile Include="MechJebModuleRendezvous.cs" />
     <Compile Include="MechJebModuleOrbitInfo.cs" />

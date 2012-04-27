@@ -242,10 +242,6 @@ namespace MuMech
 
     private void RenderVesselsUI(GUIStyle sty,GUIStyle but)
     {
-        if (GUILayout.Button("HIDE", but, GUILayout.ExpandWidth(true)))
-        {
-            Mode = UIMode.OFF;
-        }
         GUILayout.Box("Select Target",sty);
 
         //TODO: ADD BODY SUPPORT
@@ -332,10 +328,10 @@ namespace MuMech
         }
 
         GUILayout.Box("Time to AN : " +
-                      part.vessel.orbit.GetTimeToRelAN(FlightGlobals.Vessels[_selectedVesselIndex].orbit).ToString("F2"),sty);
+                      part.vessel.orbit.GetTimeToRelAN(FlightGlobals.Vessels[_selectedVesselIndex].orbit).ToString("F2"));
         GUILayout.Box("Time to DN : " +
-                      part.vessel.orbit.GetTimeToRelDN(FlightGlobals.Vessels[_selectedVesselIndex].orbit).ToString("F2"),sty);
-        GUILayout.Box("Relative Inclination :" + _relativeInclination.ToString("F2"),sty);
+                      part.vessel.orbit.GetTimeToRelDN(FlightGlobals.Vessels[_selectedVesselIndex].orbit).ToString("F2"));
+        GUILayout.Box("Relative Inclination :" + _relativeInclination.ToString("F2"));
 		if(automation==true){
         	if(GUILayout.Button(_autoAlign ? "ALIGNING" : "Auto-Align", but, GUILayout.ExpandWidth(true)))
        	  	{
@@ -391,17 +387,17 @@ namespace MuMech
             if (i != (int) SyncMode) 
                 continue;
 
-            if (GUILayout.Button(" ", sty, GUILayout.ExpandWidth(true)))
+            if (GUILayout.Button(SyncMode.ToString(),but, GUILayout.ExpandWidth(true)))
             {
                 if (i == NumberOfPredictedSyncPoints - 1) SyncMode = 0;
                 else SyncMode = SyncMode + 1;
             }
-            GUILayout.Box(SyncMode.ToString(),sty);
+            //GUILayout.Box(SyncMode.ToString(),but);
         }
         GUILayout.EndHorizontal();
         GUILayout.BeginVertical();
 
-        GUILayout.Box("Orbit		ShipToR		TgtToR ", sty, GUILayout.ExpandWidth(true));
+        GUILayout.Box("Orbit		ShipToR		TgtToR ", GUILayout.ExpandWidth(true));
         for (int i = 0; i < 4; i++)
             GUILayout.Box(_syncString[i]);
 
@@ -432,10 +428,14 @@ namespace MuMech
             _flyByWire = false;
             Mode = UIMode.SELECTED;
         }
-
-        GUILayout.Box("Distance: " + _targetDistance.ToString("F1"),sty, GUILayout.Width(300));
-        GUILayout.Box("Rel Inc : " + _relativeInclination.ToString("F3"),sty);
-        GUILayout.Box("Rel VelM: " + _relativeVelocity.magnitude.ToString("F2"),sty);
+		if (_targetDistance>10000){
+		GUILayout.Box("Distance: " + (_targetDistance/1000).ToString("F1") + "km", GUILayout.Width(300));		
+		}
+		else{
+        GUILayout.Box("Distance: " + _targetDistance.ToString("F1") + "m", GUILayout.Width(300));
+        }
+        GUILayout.Box("Rel Inc : " + _relativeInclination.ToString("F3"));
+        GUILayout.Box("Rel VelM: " + _relativeVelocity.magnitude.ToString("F2"));
 
         // Take the relative velocity and project into ship local space.
         _localRelativeVelocity = part.vessel.transform.worldToLocalMatrix.MultiplyVector(_relativeVelocity);
@@ -450,9 +450,14 @@ namespace MuMech
 	            _homeOnRelativePosition = !_homeOnRelativePosition;
 			
 		}
-        GUILayout.Box("Rel Vel : " + _localRelativeVelocity.x.ToString("F2") + ", " + _localRelativeVelocity.y.ToString("F2") + ", " + _localRelativeVelocity.z.ToString("F2"),sty);
-        GUILayout.Box("Rel Pos : " + _localRelativePosition.x.ToString("F2") + ", " + _localRelativePosition.y.ToString("F2") + ", " + _localRelativePosition.z.ToString("F2"),sty);
-
+        GUILayout.Box("Rel Vel : " + _localRelativeVelocity.x.ToString("F2") + ", " + _localRelativeVelocity.y.ToString("F2") + ", " + _localRelativeVelocity.z.ToString("F2"));
+        if (_targetDistance>10000){
+         GUILayout.Box ("Rel Pos : " + (_localRelativePosition.x/1000).ToString ("F2") + "km, " + (_localRelativePosition.y / 1000).ToString ("F2") + "km, " + (_localRelativePosition.z/1000).ToString ("F2")+"km");
+        }
+        else{
+        GUILayout.Box("Rel Pos : " + _localRelativePosition.x.ToString("F2") + ", " + _localRelativePosition.y.ToString("F2") + ", " + _localRelativePosition.z.ToString("F2"));
+				}
+				
         if (_flyByWire == false)
         {
             GUILayout.BeginHorizontal();
