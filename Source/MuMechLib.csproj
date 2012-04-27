@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A66D9959-0340-4009-A128-2BD22220DD00}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MechJeb_RinComp</RootNamespace>
+    <AssemblyName>MuMechLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\Program Files %28x86%29\KSP\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\Program Files %28x86%29\KSP\KSP_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="AROrbit.cs" />
+    <Compile Include="ARUtils.cs" />
+    <Compile Include="ComputerModule.cs" />
+    <Compile Include="FlightComputer.cs" />
+    <Compile Include="FlightInfo.cs" />
+    <Compile Include="LiquidRCSModule.cs" />
+    <Compile Include="MechJeb.cs" />
+    <Compile Include="MechJebAR202.cs" />
+    <Compile Include="MechJebCore.cs" />
+    <Compile Include="MechJebModuleAscentAutopilot.cs" />
+    <Compile Include="MechJebModuleJoke.cs" />
+    <Compile Include="MechJebModuleLandingAutopilot.cs" />
+    <Compile Include="MechJebModuleOrbitOper.cs" />
+    <Compile Include="MechJebModuleSmartASS.cs" />
+    <Compile Include="MechJebModuleSurfaceInfo.cs" />
+    <Compile Include="MechJebModuleTranslatron.cs" />
+    <Compile Include="MechJebPod.cs" />
+    <Compile Include="MechJebPod2.cs" />
+    <Compile Include="MuonDetector.cs" />
+    <Compile Include="MuUtils.cs" />
+    <Compile Include="Part.cs" />
+    <Compile Include="Radiator.cs" />
+    <Compile Include="RCS2Liquid.cs" />
+    <Compile Include="RCSLiquidEngine.cs" />
+    <Compile Include="Servo.cs" />
+    <Compile Include="SettingsManager.cs" />
+    <Compile Include="SolarPanel.cs" />
+    <Compile Include="SpeechBubble.cs" />
+    <Compile Include="Toggle.cs" />
+    <Compile Include="VariableEngine.cs" />
+    <Compile Include="VariablePod.cs" />
+    <Compile Include="VariableRCS.cs" />
+    <Compile Include="VariableTank.cs" />
+    <Compile Include="VesselState.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="RinComp.cs" />
+    <Compile Include="VesselDistanceComparer.cs" />
+    <Compile Include="MechJebModuleRendezvous.cs" />
+    <Compile Include="MechJebModuleOrbitInfo.cs" />
+  </ItemGroup>
+</Project>
